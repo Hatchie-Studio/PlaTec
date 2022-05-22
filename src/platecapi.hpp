@@ -20,10 +20,15 @@
 #ifndef PLATECAPI_H
 #define PLATECAPI_H
 
+#ifdef PLATECAPI_EXPORTS
+#define PLATECAPI_API __declspec(dllexport)
+#else
+#define PLATECAPI_API __declspec(dllimport)# endif// This class is exported from the dll
+
 #include <string.h> // For size_t.
 #include "utils.hpp"
 
-void *  platec_api_create(
+extern "C" PLATECAPI void *  platec_api_create(
     long seed,
     uint32_t width,
     uint32_t height,
@@ -32,17 +37,17 @@ void *  platec_api_create(
     uint32_t aggr_overlap_abs, float aggr_overlap_rel,
     uint32_t cycle_count, uint32_t num_plates);
 
-void    platec_api_destroy(void*);
-const uint32_t* platec_api_get_agemap(uint32_t);
-float* platec_api_get_heightmap(void*);
-uint32_t* platec_api_get_platesmap(void*);
-uint32_t  platec_api_is_finished(void*);
-void    platec_api_step(void*);
+extern "C" PLATECAPI void    platec_api_destroy(void*);
+extern "C" PLATECAPI const uint32_t* platec_api_get_agemap(uint32_t);
+extern "C" PLATECAPI float* platec_api_get_heightmap(void*);
+extern "C" PLATECAPI uint32_t* platec_api_get_platesmap(void*);
+extern "C" PLATECAPI uint32_t  platec_api_is_finished(void*);
+extern "C" PLATECAPI void    platec_api_step(void*);
 
-float platec_api_velocity_unity_vector_x(void*, uint32_t plate_index);
-float platec_api_velocity_unity_vector_y(void*, uint32_t plate_index);
+extern "C" PLATECAPI float platec_api_velocity_unity_vector_x(void*, uint32_t plate_index);
+extern "C" PLATECAPI float platec_api_velocity_unity_vector_y(void*, uint32_t plate_index);
 
-uint32_t lithosphere_getMapWidth ( void* object);
-uint32_t lithosphere_getMapHeight ( void* object);
+extern "C" PLATECAPI uint32_t lithosphere_getMapWidth ( void* object);
+extern "C" PLATECAPI uint32_t lithosphere_getMapHeight ( void* object);
 
 #endif
