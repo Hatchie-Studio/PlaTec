@@ -54,6 +54,7 @@ do { \
 	if (!(condition)) { \
 		std::cerr << "Assertion `" #condition "` failed in " << __FILE__ \
 			<< " line " << __LINE__ << " Message: " << (message) << std::endl; \
+		::fprintf(stderr, "Assertion `%s` failed in %s line %d Message: %s\n", #condition, __FILE__, __LINE__, (message));\
 		exit(1); \
 	} \
 } while (false)
@@ -63,6 +64,7 @@ do { \
 	if (!(condition)) { \
 		std::cerr << "Assertion `" #condition "` failed in " << __FILE__ \
 			<< " line " << __LINE__ << " Message: " << (message) << std::endl; \
+		::fprintf(stderr, "Assertion `%s` failed in %s line %d Message: %s\n", #condition, __FILE__, __LINE__, (message));\
 	} \
 } while (false)
 #else
