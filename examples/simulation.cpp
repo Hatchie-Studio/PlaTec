@@ -160,7 +160,19 @@ int main(int argc, char* argv[])
 
     printf("\n");
 
-    void* p = platec_api_create(params.seed, params.width, params.height, 0.65, 60, 0.02,1000000, 0.33, 2, 10);
+    // void* p = platec_api_create(params.seed, params.width, params.height, 0.65, 60, 0.02,1000000, 0.33, 2, 10);
+    void *p = platec_api_create(
+        4,
+        2048,
+        1024,
+        0.65,
+        60,
+        0.02,
+        1000000,
+        0.33,
+        2,
+        100
+    );
 
     char filenamei[250];
     sprintf(filenamei, "%s_initial.png", params.filename);

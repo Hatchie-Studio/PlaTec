@@ -4,6 +4,11 @@ add_library(PlateTectonics src/sqrdmd.cpp src/heightmap.cpp src/lithosphere.cpp 
 
 include_directories("src")
 
+IF(NOT MSVC)
+  set(CMAKE_C_FLAGS "-std=c99 -O3")
+  set(CMAKE_CXX_FLAGS "-std=c++98 -O3 -g -rdynamic")
+ENDIF()
+
 #
 # The whole MSVC
 #

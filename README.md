@@ -90,7 +90,7 @@ To run also the examples you need to install the library libpng.
 From the root directory run:
 
 ```bash
-cmake -DWITH_EXAMPLE=TRUE -G "Unix Makefiles"
+cmake -DWITH_EXAMPLES=TRUE -G "Unix Makefiles"
 make
 cd examples
 ./simulation_rect
